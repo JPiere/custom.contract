@@ -16,6 +16,7 @@
 package custom.contract.jpiere.base.plugin.org.adempiere.process;
 
 import org.adempiere.exceptions.AdempiereException;
+import org.compiere.model.MOrder;
 import org.compiere.model.MOrderLine;
 import org.compiere.model.PO;
 import org.compiere.process.DocAction;
@@ -28,7 +29,6 @@ import custom.contract.jpiere.base.plugin.org.adempiere.model.MContractContent;
 import custom.contract.jpiere.base.plugin.org.adempiere.model.MContractLogDetail;
 import custom.contract.jpiere.base.plugin.org.adempiere.model.MContractPSLine;
 import custom.contract.jpiere.base.plugin.org.adempiere.model.MContractProcSchedule;
-import jpiere.base.plugin.org.adempiere.model.MOrderJP;
 
 
 /**
@@ -75,7 +75,7 @@ public class DefaultContractProcessCreateBaseOrderIndirectly extends AbstractCon
 			}
 
 			/** Create Order header */
-			MOrderJP order = new MOrderJP(getCtx(), 0, get_TrxName());
+			MOrder order = new MOrder(getCtx(), 0, get_TrxName());
 			PO.copyValues(contractProcSchedules[i], order);
 			order.setProcessed(false);
 			order.setDocStatus(DocAction.STATUS_Drafted);

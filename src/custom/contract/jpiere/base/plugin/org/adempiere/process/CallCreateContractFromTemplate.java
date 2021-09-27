@@ -93,7 +93,7 @@ public class CallCreateContractFromTemplate extends SvrProcess {
 		ProcessInfo pi = new ProcessInfo("Title", 0, getTable_ID(), Record_ID);
 		if(Util.isEmpty(m_ContractTemplate.getClassname()))
 		{
-			pi.setClassName("jpiere.base.plugin.org.adempiere.process.DefaultCreateContractFromTemplate");
+			pi.setClassName("custom.contract.jpiere.base.plugin.org.adempiere.process.DefaultCreateContractFromTemplate");
 		}else{
 			pi.setClassName(m_ContractTemplate.getClassname());
 		}

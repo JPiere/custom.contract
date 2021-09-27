@@ -1,0 +1,2 @@
+UPDATE adempiere.AD_ModelValidator SET ModelValidationClass='custom.contract.' || ModelValidationClass WHERE Description ='JPIERE-0363:JPBP' AND ModelValidationClass not like 'custom.contract%';
+UPDATE adempiere.AD_ModelValidator SET ModelValidationClass='custom.contract.' || ModelValidationClass WHERE Description ='JPIERE-0364:JPBP' AND ModelValidationClass not like 'custom.contract%';

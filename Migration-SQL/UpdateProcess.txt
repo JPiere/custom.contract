@@ -1,0 +1,11 @@
+UPDATE adempiere.AD_Process SET ClassName='custom.contract.' || ClassName WHERE Description = 'JPIERE-0363:JPBP' AND ClassName IS NOT NULL AND ClassName not like 'custom.contract%';
+UPDATE adempiere.AD_Process SET ClassName='custom.contract.' || ClassName WHERE Description = 'JPIERE-0365:JPBP' AND ClassName IS NOT NULL AND ClassName not like 'custom.contract%';
+UPDATE adempiere.AD_Process SET ClassName='custom.contract.' || ClassName WHERE Description = 'JPIERE-0431:JPBP' AND ClassName IS NOT NULL AND ClassName not like 'custom.contract%';
+UPDATE adempiere.AD_Process SET ClassName='custom.contract.' || ClassName WHERE Description = 'JPIERE-0432:JPBP' AND ClassName IS NOT NULL AND ClassName not like 'custom.contract%';
+UPDATE adempiere.AD_Process SET ClassName='custom.contract.' || ClassName WHERE Description = 'JPIERE-0433:JPBP' AND ClassName IS NOT NULL AND ClassName not like 'custom.contract%';
+UPDATE adempiere.AD_Process SET ClassName='custom.contract.' || ClassName WHERE Description = 'JPIERE-0434:JPBP' AND ClassName IS NOT NULL AND ClassName not like 'custom.contract%';
+UPDATE adempiere.AD_Process SET ClassName='custom.contract.' || ClassName WHERE Description = 'JPIERE-0435:JPBP' AND ClassName IS NOT NULL AND ClassName not like 'custom.contract%';
+UPDATE adempiere.AD_Process SET ClassName='custom.contract.' || ClassName WHERE Description = 'JPIERE-0442:JPBP' AND ClassName IS NOT NULL AND ClassName not like 'custom.contract%';
+UPDATE adempiere.AD_Process SET ClassName='custom.contract.' || ClassName WHERE Description = 'JPIERE-0443:JPBP' AND ClassName IS NOT NULL AND ClassName not like 'custom.contract%';
+UPDATE adempiere.AD_Process SET ClassName='custom.contract.' || ClassName WHERE Description = 'JPIERE-0444:JPBP' AND ClassName IS NOT NULL AND ClassName not like 'custom.contract%';
+UPDATE adempiere.AD_Process SET ClassName='custom.contract.' || ClassName WHERE Description = 'JPIERE-0445:JPBP' AND ClassName IS NOT NULL AND ClassName not like 'custom.contract%';

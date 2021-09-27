@@ -46,8 +46,8 @@ import custom.contract.jpiere.base.plugin.org.adempiere.model.MContractContent;
 import custom.contract.jpiere.base.plugin.org.adempiere.model.MContractLine;
 import custom.contract.jpiere.base.plugin.org.adempiere.model.MContractPSInOutLine;
 import custom.contract.jpiere.base.plugin.org.adempiere.model.MContractProcPeriod;
-import jpiere.base.plugin.org.adempiere.model.MRecognition;
-import jpiere.base.plugin.org.adempiere.model.MRecognitionLine;
+import custom.contract.jpiere.base.plugin.org.adempiere.model.MRecognition;
+import custom.contract.jpiere.base.plugin.org.adempiere.model.MRecognitionLine;
 
 
 

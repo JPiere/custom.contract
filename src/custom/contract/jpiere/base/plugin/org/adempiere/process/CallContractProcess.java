@@ -1281,7 +1281,7 @@ public class CallContractProcess extends SvrProcess {
 		{
 			if(Util.isEmpty(MContractProcess.get(getCtx(), contractContent.getJP_ContractProcess_ID()).getClassname()))
 			{
-				className = "jpiere.base.plugin.org.adempiere.process.DefaultContractProcessCreateBaseOrder";
+				className = "custom.contract.jpiere.base.plugin.org.adempiere.process.DefaultContractProcessCreateBaseOrder";
 
 			}else{
 				className = contractContent.getJP_ContractProcess().getClassname();
@@ -1292,7 +1292,7 @@ public class CallContractProcess extends SvrProcess {
 		{
 			if(Util.isEmpty(MContractProcess.get(getCtx(), contractContent.getJP_ContractProcess_ID()).getClassname()))
 			{
-				className = "jpiere.base.plugin.org.adempiere.process.DefaultContractProcessCreateBaseInvoice";
+				className = "custom.contract.jpiere.base.plugin.org.adempiere.process.DefaultContractProcessCreateBaseInvoice";
 
 			}else{
 				className = contractContent.getJP_ContractProcess().getClassname();
@@ -1346,11 +1346,11 @@ public class CallContractProcess extends SvrProcess {
 			{
 				if(p_DocBaseType.equals("MMS")|| p_DocBaseType.equals("MMR"))
 				{
-					className = "jpiere.base.plugin.org.adempiere.process.DefaultContractProcessCreateDerivativeInOut";
+					className = "custom.contract.jpiere.base.plugin.org.adempiere.process.DefaultContractProcessCreateDerivativeInOut";
 
 				}else if(p_DocBaseType.equals("ARI")|| p_DocBaseType.equals("API")){
 
-					className = "jpiere.base.plugin.org.adempiere.process.DefaultContractProcessCreateDerivativeInvoice";
+					className = "custom.contract.jpiere.base.plugin.org.adempiere.process.DefaultContractProcessCreateDerivativeInvoice";
 				}
 
 			}else{
@@ -1393,7 +1393,7 @@ public class CallContractProcess extends SvrProcess {
 		String className = null;
 		if(Util.isEmpty(MContractProcess.get(getCtx(), contractContent.getJP_ContractProcess_ID()).getJP_CreateContractPSClass()))
 		{
-			className = "jpiere.base.plugin.org.adempiere.process.DefaultContractProcessCreateSchedule";
+			className = "custom.contract.jpiere.base.plugin.org.adempiere.process.DefaultContractProcessCreateSchedule";
 
 		}else{
 			className = contractContent.getJP_ContractProcess().getJP_CreateContractPSClass();
@@ -1434,7 +1434,7 @@ public class CallContractProcess extends SvrProcess {
 		{
 			if(Util.isEmpty(MContractProcess.get(getCtx(), contractContent.getJP_ContractProcess_ID()).getJP_IndirectContractProcClass()))
 			{
-				className = "jpiere.base.plugin.org.adempiere.process.DefaultContractProcessCreateBaseOrderIndirectly";
+				className = "custom.contract.jpiere.base.plugin.org.adempiere.process.DefaultContractProcessCreateBaseOrderIndirectly";
 
 			}else{
 				className = contractContent.getJP_ContractProcess().getJP_IndirectContractProcClass();
@@ -1445,7 +1445,7 @@ public class CallContractProcess extends SvrProcess {
 		{
 			if(Util.isEmpty(MContractProcess.get(getCtx(), contractContent.getJP_ContractProcess_ID()).getJP_IndirectContractProcClass()))
 			{
-				className = "jpiere.base.plugin.org.adempiere.process.DefaultContractProcessCreateBaseInvoiceIndirectly";
+				className = "custom.contract.jpiere.base.plugin.org.adempiere.process.DefaultContractProcessCreateBaseInvoiceIndirectly";
 
 			}else{
 				className = contractContent.getJP_ContractProcess().getJP_IndirectContractProcClass();
@@ -1499,11 +1499,11 @@ public class CallContractProcess extends SvrProcess {
 			{
 				if(p_DocBaseType.equals("MMS")|| p_DocBaseType.equals("MMR"))
 				{
-					className = "jpiere.base.plugin.org.adempiere.process.DefaultContractProcessCreateDerivativeInOutIndirectly";
+					className = "custom.contract.jpiere.base.plugin.org.adempiere.process.DefaultContractProcessCreateDerivativeInOutIndirectly";
 
 				}else if(p_DocBaseType.equals("ARI")|| p_DocBaseType.equals("API")){
 
-					className = "jpiere.base.plugin.org.adempiere.process.DefaultContractProcessCreateDerivativeInvoiceIndirectly";
+					className = "custom.contract.jpiere.base.plugin.org.adempiere.process.DefaultContractProcessCreateDerivativeInvoiceIndirectly";
 				}
 
 			}else{
@@ -1537,7 +1537,7 @@ public class CallContractProcess extends SvrProcess {
 		String className = null;
 		if(Util.isEmpty(p_JP_ContractAutoRenewClass))
 		{
-			className = "jpiere.base.plugin.org.adempiere.process.DefaultAutoRenewContractProcess";
+			className = "custom.contract.jpiere.base.plugin.org.adempiere.process.DefaultAutoRenewContractProcess";
 
 		}else{
 			className = p_JP_ContractAutoRenewClass;
@@ -1566,7 +1566,7 @@ public class CallContractProcess extends SvrProcess {
 		String className = null;
 		if(Util.isEmpty(p_JP_ContractStatusUpdateClass))
 		{
-			className = "jpiere.base.plugin.org.adempiere.process.DefaultContractStatusUpdateProcess";
+			className = "custom.contract.jpiere.base.plugin.org.adempiere.process.DefaultContractStatusUpdateProcess";
 
 		}else{
 			className = p_JP_ContractAutoRenewClass;

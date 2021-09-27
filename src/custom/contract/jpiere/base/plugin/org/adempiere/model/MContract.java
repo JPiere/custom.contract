@@ -44,8 +44,6 @@ import org.compiere.util.Env;
 import org.compiere.util.Msg;
 import org.compiere.util.Util;
 
-import jpiere.base.plugin.org.adempiere.model.MEstimation;
-
 /** JPIERE-0363
 *
 * @author Hideaki Hagiwara

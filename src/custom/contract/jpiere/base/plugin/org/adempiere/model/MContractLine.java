@@ -35,8 +35,6 @@ import org.compiere.util.Env;
 import org.compiere.util.Msg;
 import org.compiere.util.Util;
 
-import jpiere.base.plugin.org.adempiere.model.MRecognitionLine;
-
 /**
  * JPIERE-0363
  *

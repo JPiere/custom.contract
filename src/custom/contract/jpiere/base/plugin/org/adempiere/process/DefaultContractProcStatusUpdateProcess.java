@@ -2,7 +2,7 @@ package custom.contract.jpiere.base.plugin.org.adempiere.process;
 
 import org.compiere.process.DocAction;
 
-import jpiere.base.plugin.org.adempiere.model.MContractLogDetail;
+import custom.contract.jpiere.base.plugin.org.adempiere.model.MContractLogDetail;
 
 /**
  *

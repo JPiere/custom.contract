@@ -27,7 +27,6 @@ import org.compiere.util.Util;
 import custom.contract.jpiere.base.plugin.org.adempiere.model.MContract;
 import custom.contract.jpiere.base.plugin.org.adempiere.model.MContractLine;
 import custom.contract.jpiere.base.plugin.org.adempiere.model.MContractLogDetail;
-import jpiere.base.plugin.org.adempiere.model.MOrderJP;
 
 
 /**
@@ -92,7 +91,7 @@ public class DefaultContractProcessCreateBaseOrder extends AbstractContractProce
 
 
 		/** Create Order header */
-		MOrderJP order = new MOrderJP(getCtx(), 0, get_TrxName());
+		MOrder order = new MOrder(getCtx(), 0, get_TrxName());
 
 
 		PO.copyValues(m_ContractContent, order);
