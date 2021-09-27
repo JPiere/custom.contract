@@ -34,6 +34,8 @@ import custom.contract.jpiere.base.plugin.org.adempiere.model.MRecognition;
 
 
 /**
+ *  JPIERE-0506 Custom Contract
+ *
  *  Custom Contract Doc Factory
  *
  *  @author Hideaki Hagiwara（h.hagiwara@oss-erp.co.jp）

@@ -22,7 +22,8 @@ import org.compiere.util.CLogger;
 
 /**
  *  JPIERE-0506 Custom Contract
- *  Custom PP Process Factory
+ *
+ *  Custom Contrat Process Factory
  *
  *
  *  @author Hideaki Hagiwara(h.hagiwara@oss-erp.co.jp)
@@ -46,7 +47,6 @@ public class CustomContractProcessFactory implements IProcessFactory {
 
 		if (className.startsWith("custom.contract."))
 		{
-			className = "custom.pp." + className;
 			ProcessCall process = null;
 			process = EquinoxExtensionLocator.instance().locate(ProcessCall.class, "custom.contract.jpiere.base.plugin.org.adempiere.process", className, null).getExtension();
 			if (process == null) {

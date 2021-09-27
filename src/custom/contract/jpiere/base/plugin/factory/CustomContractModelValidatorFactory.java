@@ -17,9 +17,9 @@ import org.adempiere.base.IModelValidatorFactory;
 import org.compiere.model.ModelValidator;
 
 /**
- *  JPIERE-0506 JP Contract Doc
- *  Custom Contract Model Validator Factory
+ *  JPIERE-0506 Custom Contract
  *
+ *  Custom Contract Model Validator Factory
  *
  *  @author Hideaki Hagiwara(h.hagiwara@oss-erp.co.jp)
  *

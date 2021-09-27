@@ -43,7 +43,8 @@ public class CustomContractModelFactory implements IModelFactory {
 	@Override
 	public Class<?> getClass(String tableName)
 	{
-		if(tableName.startsWith("JP_Contract"))
+		if(tableName.startsWith("JP_Contract")
+				|| tableName.startsWith("JP_Estimation"))
 		{
 			if (tableName.endsWith("_Trl"))
 				return null;
@@ -103,7 +104,8 @@ public class CustomContractModelFactory implements IModelFactory {
 	@Override
 	public PO getPO(String tableName, int Record_ID, String trxName) {
 
-		if(tableName.startsWith("JP_Contract"))
+		if(tableName.startsWith("JP_Contract")
+				|| tableName.startsWith("JP_Estimation") )
 		{
 			Class<?> clazz = getClass(tableName);
 			if (clazz == null)
@@ -163,7 +165,8 @@ public class CustomContractModelFactory implements IModelFactory {
 	@Override
 	public PO getPO(String tableName, ResultSet rs, String trxName) {
 
-		if(tableName.startsWith("JP_Contract"))
+		if(tableName.startsWith("JP_Contract")
+				|| tableName.startsWith("JP_Estimation"))
 		{
 			Class<?> clazz = getClass(tableName);
 			if (clazz == null)

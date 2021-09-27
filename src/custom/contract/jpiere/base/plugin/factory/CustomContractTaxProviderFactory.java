@@ -22,11 +22,11 @@ import custom.contract.jpiere.base.plugin.org.adempiere.base.ICustomContractTaxP
 import custom.contract.jpiere.base.plugin.org.adempiere.base.ICustomContractTaxProviderFactory;
 
 /**
- * JPiere Tax Provider Factory
+ *  JPIERE-0506 Custom Contract
  *
+ * Custom Contract Tax Provider Factory
  *
  * @author Hideaki Hagiwara（h.hagiwara@oss-erp.co.jp）
- * @version  $Id: JPiereTaxProviderFactory.java,v 1.0 2014/08/20
  *
  */
 public class CustomContractTaxProviderFactory implements ICustomContractTaxProviderFactory {
@@ -36,8 +36,9 @@ public class CustomContractTaxProviderFactory implements ICustomContractTaxProvi
 	@Override
 	public ICustomContractTaxProvider newCustomContractTaxProviderInstance(String className) {
 
-		if(className.startsWith("jpiere.base.plugin")){
+		if(className.startsWith("jpiere.base.plugin.org.adempiere.model.JPiereTaxProvider")){
 
+			className = "custom.contract.jpiere.base.plugin.org.adempiere.model.CustomContractTaxProvider";
 
 			ICustomContractTaxProvider myCalculator = EquinoxExtensionLocator.instance().locate(ICustomContractTaxProvider.class, className, null).getExtension();
 			if (myCalculator == null)
