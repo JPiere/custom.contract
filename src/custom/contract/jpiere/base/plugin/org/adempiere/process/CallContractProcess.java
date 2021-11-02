@@ -811,7 +811,24 @@ public class CallContractProcess extends SvrProcess {
 
 		int JP_ContractProcPeriod_ID = m_Order.get_ValueAsInt(MContractProcPeriod.COLUMNNAME_JP_ContractProcPeriod_ID);
 		MContractProcPeriod orderContractProcPeriod = MContractProcPeriod.get(getCtx(), JP_ContractProcPeriod_ID);
+		Timestamp startdate = null;
+		if(contractContent.getJP_ContractProcDate_To() == null)
+		{
+			startdate = orderContractProcPeriod.getEndDate();
+		}else if(contractContent.getJP_ContractProcDate_To().compareTo(orderContractProcPeriod.getEndDate()) > 0) {
 
+			startdate = orderContractProcPeriod.getEndDate();
+		}else {
+			startdate = contractContent.getJP_ContractProcDate_To();
+		}
+
+		Timestamp endDate = null;
+		if(contractContent.getJP_ContractProcDate_From().compareTo(orderContractProcPeriod.getStartDate()) > 0)
+		{
+			endDate = contractContent.getJP_ContractProcDate_From();
+		}else {
+			endDate = orderContractProcPeriod.getStartDate();
+		}
 
 		ArrayList<MContractProcPeriod> contractProcPeriodList = new ArrayList<MContractProcPeriod>();
 
@@ -825,8 +842,8 @@ public class CallContractProcess extends SvrProcess {
 		try
 		{
 			pstmt = DB.prepareStatement(sql.toString(), null);
-			pstmt.setTimestamp(1, orderContractProcPeriod.getEndDate());
-			pstmt.setTimestamp(2, orderContractProcPeriod.getStartDate());
+			pstmt.setTimestamp(1, startdate);
+			pstmt.setTimestamp(2, endDate);
 			pstmt.setInt(3, contractContent.getJP_ContractContent_ID());
 			rs = pstmt.executeQuery();
 			while(rs.next())
@@ -849,7 +866,24 @@ public class CallContractProcess extends SvrProcess {
 	{
 		int JP_ContractProcPeriod_ID = m_Order.get_ValueAsInt(MContractProcPeriod.COLUMNNAME_JP_ContractProcPeriod_ID);
 		MContractProcPeriod orderContractProcPeriod = MContractProcPeriod.get(getCtx(), JP_ContractProcPeriod_ID);
+		Timestamp startdate = null;
+		if(contractContent.getJP_ContractProcDate_To() == null)
+		{
+			startdate = orderContractProcPeriod.getEndDate();
+		}else if(contractContent.getJP_ContractProcDate_To().compareTo(orderContractProcPeriod.getEndDate()) > 0) {
 
+			startdate = orderContractProcPeriod.getEndDate();
+		}else {
+			startdate = contractContent.getJP_ContractProcDate_To();
+		}
+
+		Timestamp endDate = null;
+		if(contractContent.getJP_ContractProcDate_From().compareTo(orderContractProcPeriod.getStartDate()) > 0)
+		{
+			endDate = contractContent.getJP_ContractProcDate_From();
+		}else {
+			endDate = orderContractProcPeriod.getStartDate();
+		}
 
 		ArrayList<MContractProcPeriod> contractProcPeriodList = new ArrayList<MContractProcPeriod>();
 
@@ -863,8 +897,8 @@ public class CallContractProcess extends SvrProcess {
 		try
 		{
 			pstmt = DB.prepareStatement(sql.toString(), null);
-			pstmt.setTimestamp(1, orderContractProcPeriod.getEndDate());
-			pstmt.setTimestamp(2, orderContractProcPeriod.getStartDate());
+			pstmt.setTimestamp(1, startdate);
+			pstmt.setTimestamp(2, endDate);
 			pstmt.setInt(3, contractContent.getJP_ContractContent_ID());
 			rs = pstmt.executeQuery();
 			while(rs.next())
