@@ -203,6 +203,19 @@ public interface I_JP_Contract_Acct
 	/** Get Policy of Create Invoice From Recognition	  */
 	public String getJP_RecogToInvoicePolicy();
 
+    /** Column name JP_Recognition_JournalPolicy */
+    public static final String COLUMNNAME_JP_Recognition_JournalPolicy = "JP_Recognition_JournalPolicy";
+
+	/** Set Journal Policy of Recognition Doc if no accounting config.
+	  * JPIERE-0536:JPBP
+	  */
+	public void setJP_Recognition_JournalPolicy (String JP_Recognition_JournalPolicy);
+
+	/** Get Journal Policy of Recognition Doc if no accounting config.
+	  * JPIERE-0536:JPBP
+	  */
+	public String getJP_Recognition_JournalPolicy();
+
     /** Column name Name */
     public static final String COLUMNNAME_Name = "Name";
 
