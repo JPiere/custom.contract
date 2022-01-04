@@ -1343,26 +1343,23 @@ public class Doc_JPRecognition extends Doc
 
 			}else{
 
-				if(contractChargeAcct != null)
+				String JP_Recognition_JournalPolicy =contractAcct.getJP_Recognition_JournalPolicy();
+				if(Util.isEmpty(JP_Recognition_JournalPolicy))
 				{
-					String JP_Recognition_JournalPolicy =contractAcct.getJP_Recognition_JournalPolicy();
-					if(Util.isEmpty(JP_Recognition_JournalPolicy))
-					{
-						JP_Recognition_JournalPolicy = MContractAcct.JP_RECOGNITION_JOURNALPOLICY_IfNoConfigTheJournalWillNotBePosted;
-					}
+					JP_Recognition_JournalPolicy = MContractAcct.JP_RECOGNITION_JOURNALPOLICY_IfNoConfigTheJournalWillNotBePosted;
+				}
 
-					if(JP_Recognition_JournalPolicy.equals(MContractAcct.JP_RECOGNITION_JOURNALPOLICY_IfNoConfigTheJournalWillNotBePosted))//NN
-					{
-						return null;
+				if(JP_Recognition_JournalPolicy.equals(MContractAcct.JP_RECOGNITION_JOURNALPOLICY_IfNoConfigTheJournalWillNotBePosted))//NN
+				{
+					return null;
 
-					}else if(JP_Recognition_JournalPolicy.equals(MContractAcct.JP_RECOGNITION_JOURNALPOLICY_IfNoConfigWillBePostedByDefaultButTaxBeExcluded)) {//DN
+				}else if(JP_Recognition_JournalPolicy.equals(MContractAcct.JP_RECOGNITION_JOURNALPOLICY_IfNoConfigWillBePostedByDefaultButTaxBeExcluded)) {//DN
 
-						return docLine.getAccount(ProductCost.ACCTTYPE_P_Expense, as);
+					return docLine.getAccount(ProductCost.ACCTTYPE_P_Expense, as);
 
-					}else if(JP_Recognition_JournalPolicy.equals(MContractAcct.JP_RECOGNITION_JOURNALPOLICY_IfNoConfigWillBePostedByDefaultAccount)) {//DD
+				}else if(JP_Recognition_JournalPolicy.equals(MContractAcct.JP_RECOGNITION_JOURNALPOLICY_IfNoConfigWillBePostedByDefaultAccount)) {//DD
 
-						return docLine.getAccount(ProductCost.ACCTTYPE_P_Expense, as);
-					}
+					return docLine.getAccount(ProductCost.ACCTTYPE_P_Expense, as);
 				}
 
 				return docLine.getAccount(ProductCost.ACCTTYPE_P_Expense, as);
@@ -1381,26 +1378,23 @@ public class Doc_JPRecognition extends Doc
 
 				}else{
 
-					if(contractProductAcct != null)
+					String JP_Recognition_JournalPolicy =contractAcct.getJP_Recognition_JournalPolicy();
+					if(Util.isEmpty(JP_Recognition_JournalPolicy))
 					{
-						String JP_Recognition_JournalPolicy =contractAcct.getJP_Recognition_JournalPolicy();
-						if(Util.isEmpty(JP_Recognition_JournalPolicy))
-						{
-							JP_Recognition_JournalPolicy = MContractAcct.JP_RECOGNITION_JOURNALPOLICY_IfNoConfigTheJournalWillNotBePosted;
-						}
+						JP_Recognition_JournalPolicy = MContractAcct.JP_RECOGNITION_JOURNALPOLICY_IfNoConfigTheJournalWillNotBePosted;
+					}
 
-						if(JP_Recognition_JournalPolicy.equals(MContractAcct.JP_RECOGNITION_JOURNALPOLICY_IfNoConfigTheJournalWillNotBePosted))//NN
-						{
-							return null;
+					if(JP_Recognition_JournalPolicy.equals(MContractAcct.JP_RECOGNITION_JOURNALPOLICY_IfNoConfigTheJournalWillNotBePosted))//NN
+					{
+						return null;
 
-						}else if(JP_Recognition_JournalPolicy.equals(MContractAcct.JP_RECOGNITION_JOURNALPOLICY_IfNoConfigWillBePostedByDefaultButTaxBeExcluded)) {//DN
+					}else if(JP_Recognition_JournalPolicy.equals(MContractAcct.JP_RECOGNITION_JOURNALPOLICY_IfNoConfigWillBePostedByDefaultButTaxBeExcluded)) {//DN
 
-							return docLine.getAccount(ProductCost.ACCTTYPE_P_InventoryClearing, as);
+						return docLine.getAccount(ProductCost.ACCTTYPE_P_InventoryClearing, as);
 
-						}else if(JP_Recognition_JournalPolicy.equals(MContractAcct.JP_RECOGNITION_JOURNALPOLICY_IfNoConfigWillBePostedByDefaultAccount)) {//DD
+					}else if(JP_Recognition_JournalPolicy.equals(MContractAcct.JP_RECOGNITION_JOURNALPOLICY_IfNoConfigWillBePostedByDefaultAccount)) {//DD
 
-							return docLine.getAccount(ProductCost.ACCTTYPE_P_InventoryClearing, as);
-						}
+						return docLine.getAccount(ProductCost.ACCTTYPE_P_InventoryClearing, as);
 					}
 
 					return docLine.getAccount(ProductCost.ACCTTYPE_P_InventoryClearing, as);
@@ -1415,26 +1409,23 @@ public class Doc_JPRecognition extends Doc
 
 				}else{
 
-					if(contractProductAcct != null)
+					String JP_Recognition_JournalPolicy =contractAcct.getJP_Recognition_JournalPolicy();
+					if(Util.isEmpty(JP_Recognition_JournalPolicy))
 					{
-						String JP_Recognition_JournalPolicy =contractAcct.getJP_Recognition_JournalPolicy();
-						if(Util.isEmpty(JP_Recognition_JournalPolicy))
-						{
-							JP_Recognition_JournalPolicy = MContractAcct.JP_RECOGNITION_JOURNALPOLICY_IfNoConfigTheJournalWillNotBePosted;
-						}
+						JP_Recognition_JournalPolicy = MContractAcct.JP_RECOGNITION_JOURNALPOLICY_IfNoConfigTheJournalWillNotBePosted;
+					}
 
-						if(JP_Recognition_JournalPolicy.equals(MContractAcct.JP_RECOGNITION_JOURNALPOLICY_IfNoConfigTheJournalWillNotBePosted))//NN
-						{
-							return null;
+					if(JP_Recognition_JournalPolicy.equals(MContractAcct.JP_RECOGNITION_JOURNALPOLICY_IfNoConfigTheJournalWillNotBePosted))//NN
+					{
+						return null;
 
-						}else if(JP_Recognition_JournalPolicy.equals(MContractAcct.JP_RECOGNITION_JOURNALPOLICY_IfNoConfigWillBePostedByDefaultButTaxBeExcluded)) {//DN
+					}else if(JP_Recognition_JournalPolicy.equals(MContractAcct.JP_RECOGNITION_JOURNALPOLICY_IfNoConfigWillBePostedByDefaultButTaxBeExcluded)) {//DN
 
-							return docLine.getAccount(ProductCost.ACCTTYPE_P_Expense, as);
+						return docLine.getAccount(ProductCost.ACCTTYPE_P_Expense, as);
 
-						}else if(JP_Recognition_JournalPolicy.equals(MContractAcct.JP_RECOGNITION_JOURNALPOLICY_IfNoConfigWillBePostedByDefaultAccount)) {//DD
+					}else if(JP_Recognition_JournalPolicy.equals(MContractAcct.JP_RECOGNITION_JOURNALPOLICY_IfNoConfigWillBePostedByDefaultAccount)) {//DD
 
-							return docLine.getAccount(ProductCost.ACCTTYPE_P_Expense, as);
-						}
+						return docLine.getAccount(ProductCost.ACCTTYPE_P_Expense, as);
 					}
 
 					return docLine.getAccount(ProductCost.ACCTTYPE_P_Expense, as);
@@ -1527,26 +1518,23 @@ public class Doc_JPRecognition extends Doc
 
 		}else{
 
-			if(contractAcct != null)
+			String JP_Recognition_JournalPolicy =contractAcct.getJP_Recognition_JournalPolicy();
+			if(Util.isEmpty(JP_Recognition_JournalPolicy))
 			{
-				String JP_Recognition_JournalPolicy =contractAcct.getJP_Recognition_JournalPolicy();
-				if(Util.isEmpty(JP_Recognition_JournalPolicy))
-				{
-					JP_Recognition_JournalPolicy = MContractAcct.JP_RECOGNITION_JOURNALPOLICY_IfNoConfigTheJournalWillNotBePosted;
-				}
+				JP_Recognition_JournalPolicy = MContractAcct.JP_RECOGNITION_JOURNALPOLICY_IfNoConfigTheJournalWillNotBePosted;
+			}
 
-				if(JP_Recognition_JournalPolicy.equals(MContractAcct.JP_RECOGNITION_JOURNALPOLICY_IfNoConfigTheJournalWillNotBePosted))//NN
-				{
-					return null;
+			if(JP_Recognition_JournalPolicy.equals(MContractAcct.JP_RECOGNITION_JOURNALPOLICY_IfNoConfigTheJournalWillNotBePosted))//NN
+			{
+				return null;
 
-				}else if(JP_Recognition_JournalPolicy.equals(MContractAcct.JP_RECOGNITION_JOURNALPOLICY_IfNoConfigWillBePostedByDefaultButTaxBeExcluded)) {//DN
+			}else if(JP_Recognition_JournalPolicy.equals(MContractAcct.JP_RECOGNITION_JOURNALPOLICY_IfNoConfigWillBePostedByDefaultButTaxBeExcluded)) {//DN
 
-					return docLine.getAccount(ProductCost.ACCTTYPE_P_TDiscountRec, as);
+				return docLine.getAccount(ProductCost.ACCTTYPE_P_TDiscountRec, as);
 
-				}else if(JP_Recognition_JournalPolicy.equals(MContractAcct.JP_RECOGNITION_JOURNALPOLICY_IfNoConfigWillBePostedByDefaultAccount)) {//DD
+			}else if(JP_Recognition_JournalPolicy.equals(MContractAcct.JP_RECOGNITION_JOURNALPOLICY_IfNoConfigWillBePostedByDefaultAccount)) {//DD
 
-					return docLine.getAccount(ProductCost.ACCTTYPE_P_TDiscountRec, as);
-				}
+				return docLine.getAccount(ProductCost.ACCTTYPE_P_TDiscountRec, as);
 			}
 
 			return docLine.getAccount(ProductCost.ACCTTYPE_P_TDiscountRec, as);
@@ -1641,26 +1629,23 @@ public class Doc_JPRecognition extends Doc
 
 		}else{
 
-			if(contractAcct != null)
+			String JP_Recognition_JournalPolicy =contractAcct.getJP_Recognition_JournalPolicy();
+			if(Util.isEmpty(JP_Recognition_JournalPolicy))
 			{
-				String JP_Recognition_JournalPolicy =contractAcct.getJP_Recognition_JournalPolicy();
-				if(Util.isEmpty(JP_Recognition_JournalPolicy))
-				{
-					JP_Recognition_JournalPolicy = MContractAcct.JP_RECOGNITION_JOURNALPOLICY_IfNoConfigTheJournalWillNotBePosted;
-				}
+				JP_Recognition_JournalPolicy = MContractAcct.JP_RECOGNITION_JOURNALPOLICY_IfNoConfigTheJournalWillNotBePosted;
+			}
 
-				if(JP_Recognition_JournalPolicy.equals(MContractAcct.JP_RECOGNITION_JOURNALPOLICY_IfNoConfigTheJournalWillNotBePosted))//NN
-				{
-					return null;
+			if(JP_Recognition_JournalPolicy.equals(MContractAcct.JP_RECOGNITION_JOURNALPOLICY_IfNoConfigTheJournalWillNotBePosted))//NN
+			{
+				return null;
 
-				}else if(JP_Recognition_JournalPolicy.equals(MContractAcct.JP_RECOGNITION_JOURNALPOLICY_IfNoConfigWillBePostedByDefaultButTaxBeExcluded)) {//DN
+			}else if(JP_Recognition_JournalPolicy.equals(MContractAcct.JP_RECOGNITION_JOURNALPOLICY_IfNoConfigWillBePostedByDefaultButTaxBeExcluded)) {//DN
 
-					return null;
+				return null;
 
-				}else if(JP_Recognition_JournalPolicy.equals(MContractAcct.JP_RECOGNITION_JOURNALPOLICY_IfNoConfigWillBePostedByDefaultAccount)) {//DD
+			}else if(JP_Recognition_JournalPolicy.equals(MContractAcct.JP_RECOGNITION_JOURNALPOLICY_IfNoConfigWillBePostedByDefaultAccount)) {//DD
 
-					return doc_Tax.getAccount(DocTax.ACCTTYPE_TaxDue,as);
-				}
+				return doc_Tax.getAccount(DocTax.ACCTTYPE_TaxDue,as);
 			}
 
 			return null;
@@ -1679,26 +1664,23 @@ public class Doc_JPRecognition extends Doc
 
 			}else{
 
-				if(contractAcct != null)
+				String JP_Recognition_JournalPolicy = contractAcct.getJP_Recognition_JournalPolicy();
+				if(Util.isEmpty(JP_Recognition_JournalPolicy))
 				{
-					String JP_Recognition_JournalPolicy = contractAcct.getJP_Recognition_JournalPolicy();
-					if(Util.isEmpty(JP_Recognition_JournalPolicy))
-					{
-						JP_Recognition_JournalPolicy = MContractAcct.JP_RECOGNITION_JOURNALPOLICY_IfNoConfigTheJournalWillNotBePosted;
-					}
+					JP_Recognition_JournalPolicy = MContractAcct.JP_RECOGNITION_JOURNALPOLICY_IfNoConfigTheJournalWillNotBePosted;
+				}
 
-					if(JP_Recognition_JournalPolicy.equals(MContractAcct.JP_RECOGNITION_JOURNALPOLICY_IfNoConfigTheJournalWillNotBePosted))//NN
-					{
-						return null;
+				if(JP_Recognition_JournalPolicy.equals(MContractAcct.JP_RECOGNITION_JOURNALPOLICY_IfNoConfigTheJournalWillNotBePosted))//NN
+				{
+					return null;
 
-					}else if(JP_Recognition_JournalPolicy.equals(MContractAcct.JP_RECOGNITION_JOURNALPOLICY_IfNoConfigWillBePostedByDefaultButTaxBeExcluded)) {//DN
+				}else if(JP_Recognition_JournalPolicy.equals(MContractAcct.JP_RECOGNITION_JOURNALPOLICY_IfNoConfigWillBePostedByDefaultButTaxBeExcluded)) {//DN
 
-						return null;
+					return null;
 
-					}else if(JP_Recognition_JournalPolicy.equals(MContractAcct.JP_RECOGNITION_JOURNALPOLICY_IfNoConfigWillBePostedByDefaultAccount)) {//DD
+				}else if(JP_Recognition_JournalPolicy.equals(MContractAcct.JP_RECOGNITION_JOURNALPOLICY_IfNoConfigWillBePostedByDefaultAccount)) {//DD
 
-						return doc_Tax.getAccount(DocTax.ACCTTYPE_TaxExpense,as);
-					}
+					return doc_Tax.getAccount(DocTax.ACCTTYPE_TaxExpense,as);
 				}
 
 				return null;
@@ -1711,26 +1693,23 @@ public class Doc_JPRecognition extends Doc
 				return MAccount.get(getCtx(), taxAcct.getJP_TaxCredit_Acct());
 			}else{
 
-				if(contractAcct != null)
+				String JP_Recognition_JournalPolicy = contractAcct.getJP_Recognition_JournalPolicy();
+				if(Util.isEmpty(JP_Recognition_JournalPolicy))
 				{
-					String JP_Recognition_JournalPolicy = contractAcct.getJP_Recognition_JournalPolicy();
-					if(Util.isEmpty(JP_Recognition_JournalPolicy))
-					{
-						JP_Recognition_JournalPolicy = MContractAcct.JP_RECOGNITION_JOURNALPOLICY_IfNoConfigTheJournalWillNotBePosted;
-					}
+					JP_Recognition_JournalPolicy = MContractAcct.JP_RECOGNITION_JOURNALPOLICY_IfNoConfigTheJournalWillNotBePosted;
+				}
 
-					if(JP_Recognition_JournalPolicy.equals(MContractAcct.JP_RECOGNITION_JOURNALPOLICY_IfNoConfigTheJournalWillNotBePosted))//NN
-					{
-						return null;
+				if(JP_Recognition_JournalPolicy.equals(MContractAcct.JP_RECOGNITION_JOURNALPOLICY_IfNoConfigTheJournalWillNotBePosted))//NN
+				{
+					return null;
 
-					}else if(JP_Recognition_JournalPolicy.equals(MContractAcct.JP_RECOGNITION_JOURNALPOLICY_IfNoConfigWillBePostedByDefaultButTaxBeExcluded)) {//DN
+				}else if(JP_Recognition_JournalPolicy.equals(MContractAcct.JP_RECOGNITION_JOURNALPOLICY_IfNoConfigWillBePostedByDefaultButTaxBeExcluded)) {//DN
 
-						return null;
+					return null;
 
-					}else if(JP_Recognition_JournalPolicy.equals(MContractAcct.JP_RECOGNITION_JOURNALPOLICY_IfNoConfigWillBePostedByDefaultAccount)) {//DD
+				}else if(JP_Recognition_JournalPolicy.equals(MContractAcct.JP_RECOGNITION_JOURNALPOLICY_IfNoConfigWillBePostedByDefaultAccount)) {//DD
 
-						return doc_Tax.getAccount(DocTax.ACCTTYPE_TaxCredit,as);
-					}
+					return doc_Tax.getAccount(DocTax.ACCTTYPE_TaxCredit,as);
 				}
 
 				return null;
