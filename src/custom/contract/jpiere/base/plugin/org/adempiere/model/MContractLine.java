@@ -23,21 +23,30 @@ import java.util.ArrayList;
 import java.util.Properties;
 import java.util.logging.Level;
 
+import org.adempiere.exceptions.AdempiereException;
 import org.adempiere.exceptions.ProductNotOnPriceListException;
+import org.compiere.model.MCharge;
+import org.compiere.model.MCurrency;
 import org.compiere.model.MInOutLine;
 import org.compiere.model.MInvoiceLine;
 import org.compiere.model.MOrderLine;
+import org.compiere.model.MPriceList;
 import org.compiere.model.MProductPricing;
 import org.compiere.model.MRole;
 import org.compiere.model.MSysConfig;
+import org.compiere.model.MTax;
 import org.compiere.util.CCache;
 import org.compiere.util.DB;
 import org.compiere.util.Env;
 import org.compiere.util.Msg;
 import org.compiere.util.Util;
 
+import custom.contract.jpiere.base.plugin.org.adempiere.base.ICustomContractTaxProvider;
+import custom.contract.jpiere.base.plugin.util.CustomContractUtil;
+
 /**
- * JPIERE-0363
+ * JPIERE-0363: Contract Management
+ * JPIERE-0541: Calculate Contract Content Tax
  *
  * @author Hideaki Hagiwara
  *
@@ -90,6 +99,22 @@ public class MContractLine extends X_JP_ContractLine {
 		return m_parent;
 	}	//	getParent
 
+	/**
+	 *	Is Tax Included in Amount
+	 *	@return true if tax calculated
+	 */
+	public boolean isTaxIncluded()
+	{
+		if (m_M_PriceList_ID == 0)
+		{
+			m_M_PriceList_ID = DB.getSQLValue(get_TrxName(),
+				"SELECT M_PriceList_ID FROM JP_ContractContent WHERE JP_ContractContent_ID=?",
+				getJP_ContractContent_ID());
+		}
+
+		MPriceList pl = MPriceList.get(getCtx(), m_M_PriceList_ID, get_TrxName());
+		return pl.isTaxIncluded();
+	}	//	isTaxIncluded
 
 	@Override
 	protected boolean beforeSave(boolean newRecord)
@@ -457,6 +482,50 @@ public class MContractLine extends X_JP_ContractLine {
 		}
 
 
+		//Tax Calculation
+		if(newRecord || is_ValueChanged("LineNetAmt") || is_ValueChanged("C_Tax_ID"))
+		{
+			BigDecimal taxAmt = Env.ZERO;
+			MTax m_tax = MTax.get(Env.getCtx(), getC_Tax_ID());
+			if(m_tax == null)
+			{
+				;//Nothing to do;
+			}else{
+
+				ICustomContractTaxProvider taxCalculater = CustomContractUtil.getCustomContractTaxProvider(m_tax);
+				//JPIERE-0369:Start
+				boolean isTaxIncluded = isTaxIncluded();
+				if(getC_Charge_ID() != 0)
+				{
+					MCharge charge = MCharge.get(getCtx(), getC_Charge_ID());
+					if(!charge.isSameTax())
+					{
+						isTaxIncluded = charge.isTaxIncluded();
+					}
+				}
+				//JPiere-0369:finish
+
+				if(taxCalculater != null)
+				{
+					taxAmt = taxCalculater.calculateTax(m_tax, getLineNetAmt(), isTaxIncluded //JPIERE-0369
+							, MCurrency.getStdPrecision(getCtx(), getParent().getC_Currency_ID())
+							, CustomContractTaxProvider.getRoundingMode(getParent().getC_BPartner_ID(), getParent().isSOTrx(), m_tax.getC_TaxProvider()));
+				}else{
+					taxAmt = m_tax.calculateTax(getLineNetAmt(), isTaxIncluded, MCurrency.getStdPrecision(getCtx(), getParent().getC_Currency_ID()));//JPIERE-0369
+				}
+
+				if(isTaxIncluded)//JPIERE-0369
+				{
+					set_ValueNoCheck("JP_TaxBaseAmt",  getLineNetAmt().subtract(taxAmt));
+				}else{
+					set_ValueNoCheck("JP_TaxBaseAmt",  getLineNetAmt());
+				}
+
+				set_ValueOfColumn("JP_TaxAmt", taxAmt);
+
+			}
+		}//Tax Calculation
+
 		return true;
 
 	}//beforeSave
@@ -547,19 +616,19 @@ public class MContractLine extends X_JP_ContractLine {
 		if (getParent().isProcessed())
 			return success;
 
-		if(newRecord || is_ValueChanged(MContractLine.COLUMNNAME_LineNetAmt))
-		{
-			String sql = "UPDATE JP_ContractContent cc"
-					+ " SET TotalLines = "
-					    + "(SELECT COALESCE(SUM(LineNetAmt),0) FROM JP_ContractLine cl WHERE cc.JP_ContractContent_ID=cl.JP_ContractContent_ID)"
-					+ "WHERE JP_ContractContent_ID=?";
-				int no = DB.executeUpdate(sql, new Object[]{Integer.valueOf(getJP_ContractContent_ID())}, false, get_TrxName(), 0);
-				if (no != 1)
+		if(newRecord
+				|| is_ValueChanged(MContractLine.COLUMNNAME_C_Tax_ID)
+				|| is_ValueChanged(MContractLine.COLUMNNAME_LineNetAmt))
 				{
-					log.warning("(1) #" + no);
+			MTax m_tax = new MTax(getCtx(), getC_Tax_ID(), get_TrxName());
+			ICustomContractTaxProvider taxCalculater = CustomContractUtil.getCustomContractTaxProvider(m_tax);
+			if (taxCalculater == null)
+				throw new AdempiereException(Msg.getMsg(getCtx(), "TaxNoProvider"));
+
+			success = taxCalculater.recalculateTax(null, this, newRecord);
+	    	if(!success)
 					return false;
 				}
-		}
 
 		return success;
 	}
