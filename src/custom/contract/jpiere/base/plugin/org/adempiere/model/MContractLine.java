@@ -1888,4 +1888,30 @@ public class MContractLine extends X_JP_ContractLine {
 		}
 	}
 
+	/**
+	 * 	Get Currency Precision
+	 *	@return precision
+	 */
+	public int getPrecision()
+	{
+		if (m_precision != null)
+			return m_precision.intValue();
+
+		String sql = "SELECT c.StdPrecision "
+			+ "FROM C_Currency c INNER JOIN JP_ContractContent x ON (x.C_Currency_ID=c.C_Currency_ID) "
+			+ "WHERE x.JP_ContractContent_ID=?";
+		int i = DB.getSQLValue(get_TrxName(), sql, getJP_ContractContent_ID());
+		if (i < 0)
+		{
+			log.warning("getPrecision = " + i + " - set to 2");
+			i = 2;
+		}
+		m_precision = Integer.valueOf(i);
+		return m_precision.intValue();
+	}	//	getPrecision
+
+	public void clearParent()
+	{
+		this.m_parent = null;
+	}
 }
