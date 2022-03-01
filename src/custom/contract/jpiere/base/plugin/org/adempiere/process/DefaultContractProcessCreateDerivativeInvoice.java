@@ -237,7 +237,7 @@ public class DefaultContractProcessCreateDerivativeInvoice extends AbstractContr
 					}
 					
 					try {
-						invoice.saveEx(get_TrxName());//DocStatus is Draft
+						invoice.saveEx(get_TrxName());
 					} catch (AdempiereException e) {
 						createContractLogDetail(MContractLogDetail.JP_CONTRACTLOGMSG_SaveError, null, invoice, e.getMessage());
 						throw e;
