@@ -12,3 +12,4 @@ Require-Bundle: org.adempiere.base;bundle-version="8.2.0",
  org.adempiere.plugin.utils;bundle-version="8.2.0",
  org.adempiere.ui.zk;bundle-version="8.2.0"
 Bundle-Activator: org.adempiere.plugin.utils.AdempiereActivator
+Export-Package: custom.contract.jpiere.base.plugin.org.adempiere.model
