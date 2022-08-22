@@ -18,16 +18,15 @@ package custom.contract.jpiere.base.plugin.org.adempiere.model;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
-
-import org.compiere.model.MTable;
+import org.compiere.model.*;
 import org.compiere.util.KeyNamePair;
 
 /** Generated Interface for JP_Estimation
- *  @author iDempiere (generated)
- *  @version Release 8.2
+ *  @author iDempiere (generated) 
+ *  @version Release 9
  */
 @SuppressWarnings("all")
-public interface I_JP_Estimation
+public interface I_JP_Estimation 
 {
 
     /** TableName=JP_Estimation */
@@ -38,7 +37,7 @@ public interface I_JP_Estimation
 
     KeyNamePair Model = new KeyNamePair(Table_ID, Table_Name);
 
-    /** AccessLevel = 1 - Org
+    /** AccessLevel = 1 - Org 
      */
     BigDecimal accessLevel = BigDecimal.valueOf(1);
 
@@ -174,12 +173,12 @@ public interface I_JP_Estimation
     /** Column name C_BPartner_ID */
     public static final String COLUMNNAME_C_BPartner_ID = "C_BPartner_ID";
 
-	/** Set Business Partner .
+	/** Set Business Partner.
 	  * Identifies a Business Partner
 	  */
 	public void setC_BPartner_ID (int C_BPartner_ID);
 
-	/** Get Business Partner .
+	/** Get Business Partner.
 	  * Identifies a Business Partner
 	  */
 	public int getC_BPartner_ID();
@@ -635,12 +634,12 @@ public interface I_JP_Estimation
     public static final String COLUMNNAME_FreightAmt = "FreightAmt";
 
 	/** Set Freight Amount.
-	  * Freight Amount
+	  * Freight Amount 
 	  */
 	public void setFreightAmt (BigDecimal FreightAmt);
 
 	/** Get Freight Amount.
-	  * Freight Amount
+	  * Freight Amount 
 	  */
 	public BigDecimal getFreightAmt();
 
@@ -674,12 +673,12 @@ public interface I_JP_Estimation
     public static final String COLUMNNAME_InvoiceRule = "InvoiceRule";
 
 	/** Set Invoice Rule.
-	  * Frequency and method of invoicing
+	  * Frequency and method of invoicing 
 	  */
 	public void setInvoiceRule (String InvoiceRule);
 
 	/** Get Invoice Rule.
-	  * Frequency and method of invoicing
+	  * Frequency and method of invoicing 
 	  */
 	public String getInvoiceRule();
 
@@ -748,12 +747,12 @@ public interface I_JP_Estimation
     public static final String COLUMNNAME_IsDropShip = "IsDropShip";
 
 	/** Set Drop Shipment.
-	  * Drop Shipments are sent from the Vendor directly to the Customer
+	  * Drop Shipments are sent directly to the Drop Shipment Location
 	  */
 	public void setIsDropShip (boolean IsDropShip);
 
 	/** Get Drop Shipment.
-	  * Drop Shipments are sent from the Vendor directly to the Customer
+	  * Drop Shipments are sent directly to the Drop Shipment Location
 	  */
 	public boolean isDropShip();
 
@@ -844,12 +843,12 @@ public interface I_JP_Estimation
     public static final String COLUMNNAME_IsTaxIncluded = "IsTaxIncluded";
 
 	/** Set Price includes Tax.
-	  * Tax is included in the price
+	  * Tax is included in the price 
 	  */
 	public void setIsTaxIncluded (boolean IsTaxIncluded);
 
 	/** Get Price includes Tax.
-	  * Tax is included in the price
+	  * Tax is included in the price 
 	  */
 	public boolean isTaxIncluded();
 
@@ -904,6 +903,15 @@ public interface I_JP_Estimation
 
 	public I_JP_Bill getJP_Bill() throws RuntimeException;
 
+    /** Column name JP_CommunicationColumn */
+    public static final String COLUMNNAME_JP_CommunicationColumn = "JP_CommunicationColumn";
+
+	/** Set Communication Column	  */
+	public void setJP_CommunicationColumn (String JP_CommunicationColumn);
+
+	/** Get Communication Column	  */
+	public String getJP_CommunicationColumn();
+
     /** Column name JP_ContractContent_ID */
     public static final String COLUMNNAME_JP_ContractContent_ID = "JP_ContractContent_ID";
 
@@ -949,10 +957,12 @@ public interface I_JP_Estimation
     /** Column name JP_Estimation_ID */
     public static final String COLUMNNAME_JP_Estimation_ID = "JP_Estimation_ID";
 
-	/** Set Estimation & Handwritten	  */
+	/** Set Estimation &amp;
+ Handwritten	  */
 	public void setJP_Estimation_ID (int JP_Estimation_ID);
 
-	/** Get Estimation & Handwritten	  */
+	/** Get Estimation &amp;
+ Handwritten	  */
 	public int getJP_Estimation_ID();
 
     /** Column name JP_Estimation_UU */

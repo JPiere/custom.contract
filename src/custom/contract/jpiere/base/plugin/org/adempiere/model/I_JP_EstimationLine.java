@@ -23,7 +23,7 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Interface for JP_EstimationLine
  *  @author iDempiere (generated) 
- *  @version Release 8.2
+ *  @version Release 9
  */
 @SuppressWarnings("all")
 public interface I_JP_EstimationLine 
@@ -95,12 +95,12 @@ public interface I_JP_EstimationLine
     /** Column name C_BPartner_ID */
     public static final String COLUMNNAME_C_BPartner_ID = "C_BPartner_ID";
 
-	/** Set Business Partner .
+	/** Set Business Partner.
 	  * Identifies a Business Partner
 	  */
 	public void setC_BPartner_ID (int C_BPartner_ID);
 
-	/** Get Business Partner .
+	/** Get Business Partner.
 	  * Identifies a Business Partner
 	  */
 	public int getC_BPartner_ID();
@@ -397,13 +397,24 @@ public interface I_JP_EstimationLine
 
 	public I_M_AttributeSetInstance getJP_ASI_To() throws RuntimeException;
 
+    /** Column name JP_CommunicationColumn */
+    public static final String COLUMNNAME_JP_CommunicationColumn = "JP_CommunicationColumn";
+
+	/** Set Communication Column	  */
+	public void setJP_CommunicationColumn (String JP_CommunicationColumn);
+
+	/** Get Communication Column	  */
+	public String getJP_CommunicationColumn();
+
     /** Column name JP_EstimationLine_ID */
     public static final String COLUMNNAME_JP_EstimationLine_ID = "JP_EstimationLine_ID";
 
-	/** Set Estimation & Handwritten Line	  */
+	/** Set Estimation &amp;
+ Handwritten Line	  */
 	public void setJP_EstimationLine_ID (int JP_EstimationLine_ID);
 
-	/** Get Estimation & Handwritten Line	  */
+	/** Get Estimation &amp;
+ Handwritten Line	  */
 	public int getJP_EstimationLine_ID();
 
     /** Column name JP_EstimationLine_UU */
@@ -418,10 +429,12 @@ public interface I_JP_EstimationLine
     /** Column name JP_Estimation_ID */
     public static final String COLUMNNAME_JP_Estimation_ID = "JP_Estimation_ID";
 
-	/** Set Estimation & Handwritten	  */
+	/** Set Estimation &amp;
+ Handwritten	  */
 	public void setJP_Estimation_ID (int JP_Estimation_ID);
 
-	/** Get Estimation & Handwritten	  */
+	/** Get Estimation &amp;
+ Handwritten	  */
 	public int getJP_Estimation_ID();
 
 	public I_JP_Estimation getJP_Estimation() throws RuntimeException;
