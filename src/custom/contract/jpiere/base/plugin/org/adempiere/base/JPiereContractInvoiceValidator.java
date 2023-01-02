@@ -18,7 +18,7 @@ import java.sql.Timestamp;
 import java.util.List;
 import java.util.logging.Level;
 
-import org.adempiere.webui.window.FDialog;
+import org.adempiere.webui.window.Dialog;
 import org.compiere.acct.DocLine;
 import org.compiere.acct.DocTax;
 import org.compiere.acct.Fact;
@@ -315,7 +315,7 @@ public class JPiereContractInvoiceValidator extends AbstractContractValidator  i
 						String message = Msg.getMsg(Env.getCtx(), "JP_NOT-INOUT", objs);//It is not input in {0}
 
 						try {
-							FDialog.info(0, null, "JP_ContractManagementInfo"
+							Dialog.info(0, null, "JP_ContractManagementInfo"
 								, nonEnterable + " " + contractContent + " , " + contractPeriod + " -> " + toBeConfirmed +" : " + message);
 						}catch(Exception e) {
 							;//ignore
@@ -481,7 +481,7 @@ public class JPiereContractInvoiceValidator extends AbstractContractValidator  i
 						String spotContract = MRefList.getListName(Env.getCtx(), column.getAD_Reference_Value_ID(), MContract.JP_CONTRACTTYPE_SpotContract);
 
 						try {
-							FDialog.info(0, null, "JP_ContractManagementInfo"
+							Dialog.info(0, null, "JP_ContractManagementInfo"
 								, nonEnterable + " " + contractPeriod + " -> " + toBeConfirmed + " : "+  spotContract);
 						}catch(Exception e) {
 							;//ignore
@@ -509,7 +509,7 @@ public class JPiereContractInvoiceValidator extends AbstractContractValidator  i
 						String generalContract = MRefList.getListName(Env.getCtx(), column.getAD_Reference_Value_ID(), MContract.JP_CONTRACTTYPE_GeneralContract);
 
 						try {
-							FDialog.info(0, null, "JP_ContractManagementInfo"
+							Dialog.info(0, null, "JP_ContractManagementInfo"
 								, nonEnterable + " " +contractContent + " , " + contractPeriod + " -> " + toBeConfirmed + " : " + generalContract);
 						}catch(Exception e) {
 							;//ignore
@@ -699,7 +699,7 @@ public class JPiereContractInvoiceValidator extends AbstractContractValidator  i
 								String createDerivativeDocPolicy = Msg.getElement(Env.getCtx(), "JP_CreateDerivativeDocPolicy");
 
 								try {
-									FDialog.info(0, null, "JP_ContractManagementInfo"
+									Dialog.info(0, null, "JP_ContractManagementInfo"
 										, nonEnterable + " " + contractPeriod + " -> "+ toBeConfirmed + " : " +createDerivativeDocPolicy);
 								}catch(Exception e) {
 									;//ignore
@@ -768,7 +768,7 @@ public class JPiereContractInvoiceValidator extends AbstractContractValidator  i
 							String spotContract = MRefList.getListName(Env.getCtx(), column.getAD_Reference_Value_ID(), MContract.JP_CONTRACTTYPE_SpotContract);
 
 							try {
-								FDialog.info(0, null, "JP_ContractManagementInfo"
+								Dialog.info(0, null, "JP_ContractManagementInfo"
 									, nonEnterable + " " + contractPeriod + " -> " + toBeConfirmed + " : " +  spotContract);
 							}catch(Exception e) {
 								;//ignore
@@ -795,7 +795,7 @@ public class JPiereContractInvoiceValidator extends AbstractContractValidator  i
 							String generalContract = MRefList.getListName(Env.getCtx(), column.getAD_Reference_Value_ID(), MContract.JP_CONTRACTTYPE_GeneralContract);
 
 							try {
-								FDialog.info(0, null, "JP_ContractManagementInfo"
+								Dialog.info(0, null, "JP_ContractManagementInfo"
 									, nonEnterable + " " +cLine + " , " + contractPeriod + " -> " + toBeConfirmed + " : " + generalContract);
 							}catch(Exception e) {
 								;//ignore
@@ -820,7 +820,7 @@ public class JPiereContractInvoiceValidator extends AbstractContractValidator  i
 						String message = Msg.getMsg(Env.getCtx(), "JP_NOT-INOUT", objs);
 
 						try {
-							FDialog.info(0, null, "JP_ContractManagementInfo"
+							Dialog.info(0, null, "JP_ContractManagementInfo"
 								, nonEnterable + " " + contractPeriod + " -> " + toBeConfirmed + " : " + message);
 						}catch(Exception e) {
 							;//ignore
