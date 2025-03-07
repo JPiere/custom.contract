@@ -35,6 +35,8 @@ import org.compiere.util.Util;
  */
 public class MContractContentT extends X_JP_ContractContentT {
 
+	private static final long serialVersionUID = -7466465610858785266L;
+
 	public MContractContentT(Properties ctx, int JP_ContractContentT_ID, String trxName)
 	{
 		super(ctx, JP_ContractContentT_ID, trxName);
@@ -504,7 +506,7 @@ public class MContractContentT extends X_JP_ContractContentT {
 	{
 		return MCurrency.getStdPrecision(getCtx(), getC_Currency_ID());
 	}
-
+	
 	/**
 	 * 	Set Price List (and Currency) when valid
 	 * 	@param M_PriceList_ID price list

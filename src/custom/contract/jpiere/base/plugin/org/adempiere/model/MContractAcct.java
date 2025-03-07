@@ -40,6 +40,8 @@ import org.compiere.util.Util;
  **/
 public class MContractAcct extends X_JP_Contract_Acct {
 
+	private static final long serialVersionUID = 2758591637497322138L;
+
 	public MContractAcct(Properties ctx, int JP_Contract_Acct_ID, String trxName)
 	{
 		super(ctx, JP_Contract_Acct_ID, trxName);
@@ -340,7 +342,7 @@ public class MContractAcct extends X_JP_Contract_Acct {
 
 		String key = String.valueOf(C_Tax_ID) + String.valueOf(C_AcctSchema_ID);
 		if(contractTaxAcct.containsKey(key))
-			{
+		{
 			return contractTaxAcct.get(key);
 
 		}else{

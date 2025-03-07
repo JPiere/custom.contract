@@ -56,6 +56,8 @@ import custom.contract.jpiere.base.plugin.util.CustomContractUtil;
  */
 public class MContractLine extends X_JP_ContractLine {
 
+	private static final long serialVersionUID = -5626232236867448513L;
+	
 	/** Parent					*/
 	protected MContractContent			m_parent = null;
 	protected Integer			m_precision = null;
@@ -631,7 +633,7 @@ public class MContractLine extends X_JP_ContractLine {
 		if(newRecord
 				|| is_ValueChanged(MContractLine.COLUMNNAME_C_Tax_ID)
 				|| is_ValueChanged(MContractLine.COLUMNNAME_LineNetAmt))
-				{
+		{
 			MTax m_tax = new MTax(getCtx(), getC_Tax_ID(), get_TrxName());
 			ICustomContractTaxProvider taxCalculater = CustomContractUtil.getCustomContractTaxProvider(m_tax);
 			if (taxCalculater == null)
@@ -639,8 +641,8 @@ public class MContractLine extends X_JP_ContractLine {
 
 			success = taxCalculater.recalculateTax(null, this, newRecord);
 	    	if(!success)
-					return false;
-				}
+	    		return false;
+		}
 
 		return success;
 	}
@@ -1813,7 +1815,7 @@ public class MContractLine extends X_JP_ContractLine {
 
 		}else if(getJP_DerivativeDocPolicy_InOut().equals("DD") && getJP_DerivativeDocPolicy_Inv().equals("DD")){
 
-			;//Noting to do;
+			;//Nothing to do;
 
 		}else{
 

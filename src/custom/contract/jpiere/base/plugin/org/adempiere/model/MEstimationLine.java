@@ -48,6 +48,8 @@ import custom.contract.jpiere.base.plugin.util.CustomContractUtil;
 
 public class MEstimationLine extends X_JP_EstimationLine {
 
+	private static final long serialVersionUID = -1954224213148716934L;
+
 	/** Parent					*/
 	protected MEstimation			m_parent = null;
 
