@@ -70,9 +70,6 @@ import custom.contract.jpiere.base.plugin.util.CustomContractUtil;
 */
 public class MContractContent extends X_JP_ContractContent implements DocAction,DocOptions
 {
-	/**
-	 *
-	 */
 	private static final long serialVersionUID = -7588955558162632796L;
 
 
@@ -952,16 +949,16 @@ public class MContractContent extends X_JP_ContractContent implements DocAction,
 				if(getJP_ContractProcStatus().equals(MContractContent.JP_CONTRACTPROCSTATUS_Invalid)
 						|| getJP_ContractProcStatus().equals(MContractContent.JP_CONTRACTPROCSTATUS___) )
 				{
-					;//Noting to do;
+					;//Nothing to do;
 				}else {
 
 					if(getJP_ContractC_AutoUpdatePolicy().equals(MContractContent.JP_CONTRACTC_AUTOUPDATEPOLICY_RenewTheContractContent))
 					{
 						if(getDocStatus().equals(DocAction.STATUS_Closed) || getDocStatus().equals(DocAction.STATUS_Reversed) || getDocStatus().equals(DocAction.STATUS_Voided))
 						{
-							;//Noting to do;
+							;//Nothing to do;
 						}else if(isRenewedContractContentJP()) {
-							;//Noting to do;
+							;//Nothing to do;
 						}else {
 
 							//setJP_ContractProcDate_To(getParent().getJP_ContractPeriodDate_To());
@@ -971,7 +968,7 @@ public class MContractContent extends X_JP_ContractContent implements DocAction,
 
 						if(getDocStatus().equals(DocAction.STATUS_Closed) || getDocStatus().equals(DocAction.STATUS_Reversed) || getDocStatus().equals(DocAction.STATUS_Voided))
 						{
-							;//Noting to do;
+							;//Nothing to do;
 
 						}else {
 

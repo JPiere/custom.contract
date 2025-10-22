@@ -82,7 +82,7 @@ public class JPiereContractMatchInvModelValidator implements ModelValidator,Fact
 
 			if(inv_ContractContent_ID == 0 && io_ContractContent_ID == 0)
 			{
-		return null;
+				return null;
 
 			}else if(inv_ContractContent_ID > 0 && io_ContractContent_ID <= 0){
 
@@ -185,7 +185,7 @@ public class JPiereContractMatchInvModelValidator implements ModelValidator,Fact
 				FactLine[]  factLine = fact.getLines();
 				for(int i = 0; i < factLine.length; i++)
 				{
-						if(JP_Order_ID > 0)
+					if(JP_Order_ID > 0)
 						factLine[i].set_ValueNoCheck(JP_ORDER_ID, JP_Order_ID);
 
 					if(JP_Contract_ID > 0)

@@ -74,6 +74,7 @@ import custom.contract.jpiere.base.plugin.org.adempiere.model.MRecognitionLine;
  *  JPIERE-0408: Set Counter Doc Info
  *  JPIERE-0521: Add JP_Contract_ID, JP_ContractProcPeriod_ID Columns to Fact Acct Table
  *  JPIERE-0539: Create GL Journal From Invoice
+ *  JPIERE-0556: Add column to the Journal For legal compliance.
  *
  *  @author  Hideaki Hagiwara（h.hagiwara@oss-erp.co.jp）
  *
@@ -852,7 +853,7 @@ public class JPiereContractInvoiceValidator extends AbstractContractValidator  i
 					if(rLine_QtyInvoiced.abs().compareTo(iLine_QtyInvoiced.abs()) == 0
 							|| iLine_QtyInvoiced.compareTo(Env.ZERO) == 0)
 					{
-						;//Noting to do
+						;//Nothing to do
 					}else{
 						//Different Quantity between {0} and {1}
 						String msg0 = Msg.getElement(Env.getCtx(), "C_InvoiceLine_ID")+" - " + Msg.getElement(Env.getCtx(), "QtyInvoiced");
@@ -905,7 +906,7 @@ public class JPiereContractInvoiceValidator extends AbstractContractValidator  i
 		//JPIERE-0521: Add JP_Contract_ID, JP_ContractProcPeriod_ID Columns to Fact Acct Table
 		if(po.get_TableName().equals(MInvoice.Table_Name))
 		{
-				MInvoice invoice = (MInvoice)po;
+			MInvoice invoice = (MInvoice)po;
 
 			int JP_Contract_ID = invoice.get_ValueAsInt("JP_Contract_ID");
 			int JP_ContractContent_ID = invoice.get_ValueAsInt("JP_ContractContent_ID");
@@ -921,13 +922,15 @@ public class JPiereContractInvoiceValidator extends AbstractContractValidator  i
 				JP_Order_ID = rma.get_ValueAsInt("JP_Order_ID");
 			}
 
-				for(Fact fact : facts)
+			for(Fact fact : facts)
+			{
+				FactLine[]  factLine = fact.getLines();
+				for(int i = 0; i < factLine.length; i++)
 				{
-					FactLine[]  factLine = fact.getLines();
-					for(int i = 0; i < factLine.length; i++)
-					{
-							if(JP_Order_ID > 0)
-								factLine[i].set_ValueNoCheck("JP_Order_ID", JP_Order_ID);
+					factLine[i].set_ValueNoCheck("JP_Invoice_ID", invoice.getC_Invoice_ID());
+					
+					if(JP_Order_ID > 0)
+						factLine[i].set_ValueNoCheck("JP_Order_ID", JP_Order_ID);
 
 					if(JP_Contract_ID > 0)
 						factLine[i].set_ValueNoCheck("JP_Contract_ID", JP_Contract_ID);
@@ -943,6 +946,7 @@ public class JPiereContractInvoiceValidator extends AbstractContractValidator  i
 			}//for
 
 		}//JPIERE-0521
+
 
 		//JPIERE-0539: Create GL Journal From Invoice
 		if(!po.get_ValueAsBoolean(MInvoice.COLUMNNAME_Posted)) //Check of repost to avoid duplicate processing
@@ -1330,13 +1334,22 @@ public class JPiereContractInvoiceValidator extends AbstractContractValidator  i
 		{
 			glLine.set_ValueNoCheck("C_Tax_ID" , iTax.getC_Tax_ID());
 			glLine.set_ValueNoCheck("JP_SOPOType" , "N");
+			
+		}else {
+			
+			Object obj_Tax_ID = factLine.get_Value("C_Tax_ID");
+			if(obj_Tax_ID != null)
+			{
+				glLine.set_ValueNoCheck("C_Tax_ID" , obj_Tax_ID);
+				glLine.set_ValueNoCheck("JP_SOPOType" , "N");
+			}
 		}
 		
 		
 		if(isReverse)
 		{
 			glLine.setAccount_ID(factLine.getAccount_ID());
-			glLine.setQty(factLine.getQty().negate());
+			glLine.setQty(factLine.getQty().negate());			
 			glLine.setAmtSourceDr(factLine.getAmtAcctCr());
 			glLine.setAmtAcctDr(factLine.getAmtAcctCr());
 			glLine.setAmtSourceCr(factLine.getAmtAcctDr());
@@ -1345,6 +1358,16 @@ public class JPiereContractInvoiceValidator extends AbstractContractValidator  i
 			{
 				glLine.set_ValueNoCheck("JP_TaxBaseAmt" , iTax.getTaxBaseAmt().negate());
 				glLine.set_ValueNoCheck("JP_TaxAmt" , iTax.getTaxAmt().negate());
+				
+			}else {
+				
+				Object obj_TaxBaseAmt = factLine.get_Value("JP_TaxBaseAmt");
+				if(obj_TaxBaseAmt != null)
+					glLine.set_ValueNoCheck("JP_TaxBaseAmt" , ((BigDecimal)obj_TaxBaseAmt).negate());
+				
+				Object obj_TaxAmt = factLine.get_Value("JP_TaxAmt");
+				if(obj_TaxAmt != null)
+					glLine.set_ValueNoCheck("JP_TaxAmt" , ((BigDecimal)obj_TaxAmt).negate());
 			}
 
 		}else {
@@ -1359,6 +1382,16 @@ public class JPiereContractInvoiceValidator extends AbstractContractValidator  i
 			{
 				glLine.set_ValueNoCheck("JP_TaxBaseAmt" , iTax.getTaxBaseAmt());
 				glLine.set_ValueNoCheck("JP_TaxAmt" , iTax.getTaxAmt());
+			
+			}else {
+				
+				Object obj_TaxBaseAmt = factLine.get_Value("JP_TaxBaseAmt");
+				if(obj_TaxBaseAmt != null)
+					glLine.set_ValueNoCheck("JP_TaxBaseAmt" , obj_TaxBaseAmt);
+				
+				Object obj_TaxAmt = factLine.get_Value("JP_TaxAmt");
+				if(obj_TaxAmt != null)
+					glLine.set_ValueNoCheck("JP_TaxAmt" , obj_TaxAmt);			
 			}
 
 		}

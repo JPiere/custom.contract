@@ -289,7 +289,7 @@ public class JPiereContractInOutValidator extends AbstractContractValidator  imp
 				String docAction = content.getJP_Contract_Acct().getDocAction();
 				if(docAction == null)
 				{
-					;//Noting to do. DocStatus is Draft
+					;//Nothing to do. DocStatus is Draft
 				}else{
 
 					if (!recognition.processIt(docAction))
@@ -616,7 +616,7 @@ public class JPiereContractInOutValidator extends AbstractContractValidator  imp
 		//JPIERE-0521: Add JP_Contract_ID, JP_ContractProcPeriod_ID Columns to Fact Acct Table
 		if(po.get_TableName().equals(MInOut.Table_Name))
 		{
-				MInOut inOut = (MInOut)po;
+			MInOut inOut = (MInOut)po;
 
 			int JP_Contract_ID = inOut.get_ValueAsInt("JP_Contract_ID");
 			int JP_ContractContent_ID = inOut.get_ValueAsInt("JP_ContractContent_ID");
@@ -632,13 +632,13 @@ public class JPiereContractInOutValidator extends AbstractContractValidator  imp
 				JP_Order_ID = rma.get_ValueAsInt("JP_Order_ID");
 			}
 
-				for(Fact fact : facts)
+			for(Fact fact : facts)
+			{
+				FactLine[]  factLine = fact.getLines();
+				for(int i = 0; i < factLine.length; i++)
 				{
-					FactLine[]  factLine = fact.getLines();
-					for(int i = 0; i < factLine.length; i++)
-					{
-							if(JP_Order_ID > 0)
-								factLine[i].set_ValueNoCheck("JP_Order_ID", JP_Order_ID);
+					if(JP_Order_ID > 0)
+						factLine[i].set_ValueNoCheck("JP_Order_ID", JP_Order_ID);
 
 					if(JP_Contract_ID > 0)
 						factLine[i].set_ValueNoCheck("JP_Contract_ID", JP_Contract_ID);
