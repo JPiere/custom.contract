@@ -44,7 +44,6 @@ import org.compiere.model.MTaxProvider;
 import org.compiere.model.MUOM;
 import org.compiere.model.PO;
 import org.compiere.model.Query;
-import org.compiere.model.Tax;
 import org.compiere.process.ProcessInfo;
 import org.compiere.util.CCache;
 import org.compiere.util.CLogger;
@@ -912,7 +911,7 @@ public class MRecognitionLine extends X_JP_RecognitionLine
 			{
 				if(getJP_RecogLine_SplitFrom_ID() > 0 || getJP_TargetQtyRecognized().signum() != 0)
 				{
-					;//Noting to do;
+					;//Nothing to do;
 				}else if(getJP_TargetQtyRecognized().signum() == 0 && getM_InOutLine_ID() > 0 ) {
 
 					BigDecimal qtyRecognized = Env.ZERO;
@@ -1170,7 +1169,7 @@ public class MRecognitionLine extends X_JP_RecognitionLine
 					if(qtyInvoiced.compareTo(qtyToRecognize) > 0)
 					{
 						try {
-							Dialog.info(0, null, "JP_ToBeConfirmed", Msg.getMsg(getCtx(), "JP_Over_QtyRecognized_Possibility")
+							Dialog.info(0, "JP_ToBeConfirmed", Msg.getMsg(getCtx(), "JP_Over_QtyRecognized_Possibility")
 									+" : "+ oline.getParent().getDocumentNo() +  " - " + oline.getLine());
 						}catch(Exception e) {
 							;//ignore
@@ -1183,7 +1182,7 @@ public class MRecognitionLine extends X_JP_RecognitionLine
 					if(qtyInvoiced.compareTo(qtyToRecognize) < 0)
 					{
 						try {
-							Dialog.info(0, null, "JP_ToBeConfirmed", Msg.getMsg(getCtx(), "JP_Over_QtyRecognized_Possibility")
+							Dialog.info(0, "JP_ToBeConfirmed", Msg.getMsg(getCtx(), "JP_Over_QtyRecognized_Possibility")
 									+" : "+ oline.getParent().getDocumentNo() +  " - " + oline.getLine());
 						}catch(Exception e) {
 							;//ignore
