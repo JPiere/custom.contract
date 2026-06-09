@@ -359,7 +359,8 @@ public interface ICustomContractTaxProvider {
 		MTax tax = MTax.get(m_ContractContentTax.getCtx(), m_ContractContentTax.getC_Tax_ID());
 		boolean documentLevel = tax.isDocumentLevel();
 
-		RoundingMode roundingMode = CustomContractTaxProvider.getRoundingMode(line.getParent().getC_BPartner_ID(), line.getParent().isSOTrx(), tax.getC_TaxProvider());
+		MTaxProvider m_TaxProvider = new MTaxProvider(m_ContractContentTax.getCtx(), tax.getC_TaxProvider_ID(), m_ContractContentTax.get_TrxName());
+		RoundingMode roundingMode = CustomContractTaxProvider.getRoundingMode(line.getParent().getC_BPartner_ID(), line.getParent().isSOTrx(), m_TaxProvider);
 
 		//
 		String sql = "SELECT LineNetAmt FROM JP_ContractLine WHERE JP_ContractContent_ID=? AND C_Tax_ID=?";
