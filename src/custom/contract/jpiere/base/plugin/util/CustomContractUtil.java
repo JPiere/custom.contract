@@ -17,6 +17,8 @@ import java.util.List;
 
 import org.adempiere.base.Service;
 import org.compiere.model.MTax;
+import org.compiere.model.MTaxProvider;
+import org.compiere.model.MTaxProviderCfg;
 import org.compiere.util.Util;
 
 import custom.contract.jpiere.base.plugin.org.adempiere.base.ICustomContractTaxProvider;
@@ -32,7 +34,9 @@ public class CustomContractUtil {
 
 	public static ICustomContractTaxProvider getCustomContractTaxProvider(MTax m_tax)
 	{
-		String className = m_tax.getC_TaxProvider().getC_TaxProviderCfg().getTaxProviderClass();
+		MTaxProvider m_TaxProvider = new MTaxProvider(m_tax.getCtx(), m_tax.getC_TaxProvider_ID(), m_tax.get_TrxName()); //TODO Get from Cache
+		MTaxProviderCfg m_TaxProviderCfg = new MTaxProviderCfg(m_tax.getCtx(), m_TaxProvider.getC_TaxProviderCfg_ID(), m_tax.get_TrxName());
+		String className = m_TaxProviderCfg.getTaxProviderClass();
 		if(Util.isEmpty(className))
 			className = COUSTOM_CONTRACT_TAX_PROVIDER;
 
